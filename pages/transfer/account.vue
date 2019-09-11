@@ -8,7 +8,7 @@
         <v-select
           item-text="name"
           item-value="id"
-          :items="accounts(branchId)"
+          :items="accounts(branchId).filter(a => a.id !== id)"
           @input="$store.commit('transfer/accountId', $event)"
         />
         <v-btn nuxt dark to="amount" color="primary" :disabled="!accountId">
@@ -27,6 +27,7 @@ export default {
   middleware: ["hasBank", "hasBranch"],
   computed: {
     ...mapGetters("accounts", ["accounts"]),
+    ...mapGetters("login", ["id"]),
     ...mapGetters("transfer", ["bankId", "branchId", "accountId"]),
   },
 };
