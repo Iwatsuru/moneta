@@ -12,6 +12,9 @@
           :value="bankId"
           @input="$store.commit('transfer/bankId', $event)"
         />
+        <v-btn nuxt dark to="/" color="red" :disabled="!bankId">
+          戻る
+        </v-btn>
         <v-btn nuxt dark to="branch" color="primary" :disabled="!bankId">
           次へ
         </v-btn>
