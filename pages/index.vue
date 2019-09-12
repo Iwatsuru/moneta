@@ -6,11 +6,12 @@
       <menu-button to="/statements">入出金明細</menu-button>
       <menu-button to="/transfer/bank">振込</menu-button>
       <menu-button to="/admin/banks">管理画面</menu-button>
-      <menu-button to="login">ログアウト</menu-button>
+      <menu-button @click="login">ログアウト</menu-button>
     </div>
     <div class="column"></div>
   </div>
 </template>
+
 
 <script>
 import menuButton from "~/components/ui/menu-button";
@@ -18,5 +19,11 @@ import menuButton from "~/components/ui/menu-button";
 export default {
   components: { menuButton },
   middleware: "login",
+  methods:{
+    login(){
+      this.$router.push("login");
+      location.replace("login");
+    }
+  }
 };
 </script>
