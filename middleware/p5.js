@@ -9,6 +9,7 @@ function runner(p5) {
 
   let chars = LETTERS.split("").map((letter, index) => ({ letter, index }));
   let toggle = true;
+  
 
   p5.setup = () => {
     const canvas = p5.createCanvas(WIDTH, HEIGHT);
@@ -24,20 +25,9 @@ function runner(p5) {
   };
 
   p5.draw = () => {
-    p5.background(254);
+    p5.background(400);
     for (const char of chars) {
-      if (p5.mouseIsPressed) {
-        char.vx = (char.ox - char.x) / 20;
-        char.vy = (char.oy - char.y) / 20;
-      }
-      if (char.x < 0 || WIDTH < char.x + SIZE) {
-        char.vx = -char.vx;
-      }
-      if (char.y < SIZE || HEIGHT < char.y) {
-        char.vy = -char.vy;
-      }
-      char.x += char.vx;
-      char.y += char.vy;
+
 
       p5.colorMode(p5.HSB, 100);
       p5.fill(char.color, 20, 100);
@@ -49,6 +39,8 @@ function runner(p5) {
       p5.text(char.letter, char.x, char.y);
     }
   };
+
+
 
   p5.mouseReleased = () => {
     if (p5.mouseY > HEIGHT) {
