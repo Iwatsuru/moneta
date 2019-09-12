@@ -13,6 +13,9 @@
           :rules="[v => v <= account.total - fee || '残高が不足しています']"
           @input="$store.commit('transfer/amount', $event)"
         />
+        <v-btn nuxt dark to="account" color="red" >
+          戻る
+        </v-btn>
         <v-btn nuxt dark color="primary" :disabled="!valid" @click="transfer">
           振込実行
         </v-btn>
